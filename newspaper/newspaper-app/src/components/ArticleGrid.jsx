@@ -1,93 +1,42 @@
 import React from 'react';
+import ArticleCard from './ArticleCard';
 
-const ArticleCard = ({ 
-  category,
+const ArticleGrid = ({ 
+  articles = [],
+  columns = 3, // 2, 3, or 4
+  gap = 'normal', // 'tight', 'normal', 'loose'
   title,
-  description,
-  author,
-  image,
-  readTime,
-  variant = 'main', // 'main', 'secondary', 'compact'
-  onClick
+  variant = 'main' // passed to ArticleCard
 }) => {
-  // Main variant - with large image
-  if (variant === 'main') {
-    return (
-      <article className="article-card" onClick={onClick}>
-        {image && (
-          <div className="article-card-image-wrapper">
-            <img 
-              src={image} 
-              alt={title}
-              className="article-card-image"
-            />
-          </div>
-        )}
-        {category && (
-          <p className="article-card-category">
-            {category}
-          </p>
-        )}
-        <h3 className="article-card-title">
-          {title}
-        </h3>
-        {description && (
-          <p className="article-card-description">
-            {description}
-          </p>
-        )}
-        <div className="article-card-meta">
-          {author && <span className="font-sans">By {author}</span>}
-          {author && readTime && <span>·</span>}
-          {readTime && <span>{readTime}</span>}
-        </div>
-      </article>
-    );
+  if (articles.length === 0) {
+    return null;
   }
 
-  // Secondary variant - no image, text-focused
-  if (variant === 'secondary') {
-    return (
-      <article className="article-card article-card-secondary" onClick={onClick}>
-        {category && (
-          <p className="article-card-category">
-            {category}
-          </p>
-        )}
-        <h3 className="article-card-title">
-          {title}
-        </h3>
-        <div className="article-card-meta">
-          {author && <span className="font-sans">By {author}</span>}
-          {author && readTime && <span>·</span>}
-          {readTime && <span>{readTime}</span>}
-        </div>
-      </article>
-    );
-  }
+  const gapClass = `gap-${gap}`;
+  const columnsClass = `columns-${columns}`;
 
-  // Compact variant - smaller, minimal
-  if (variant === 'compact') {
-    return (
-      <article className="article-card article-card-compact" onClick={onClick}>
-        {category && (
-          <p className="article-card-category">
-            {category}
-          </p>
-        )}
-        <h4 className="article-card-title">
-          {title}
-        </h4>
-        <div className="article-card-meta">
-          {author && <span className="font-sans">By {author}</span>}
-          {author && readTime && <span>·</span>}
-          {readTime && <span>{readTime}</span>}
-        </div>
-      </article>
-    );
-  }
-
-  return null;
+  return (
+    <section>
+      {title && (
+        <h2 className="article-grid-title">{title}</h2>
+      )}
+      <div className={`article-grid ${columnsClass} ${gapClass}`}>
+        {articles.map((article, index) => (
+          <ArticleCard
+            key={article.id || index}
+            category={article.category}
+            title={article.title}
+            description={article.description}
+            author={article.author}
+            image={article.image}
+            readTime={article.readTime}
+            variant={variant}
+            onClick={article.onClick}
+          />
+        ))}
+      </div>
+    </section>
+  );
 };
 
-export default ArticleCard;
+export default ArticleGrid;

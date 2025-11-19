@@ -13,10 +13,11 @@ const Header = ({ siteName = "The BHS Post", navItems = [] }) => {
 
   const defaultNavItems = [
     { label: 'News', href: '#' },
-    { label: 'Books & Culture', href: '#' },
-    { label: 'Fiction & Poetry', href: '#' },
-    { label: 'Humor & Cartoons', href: '#' },
-    { label: 'Puzzles & Games', href: '#' },
+    { label: 'Art & Culture', href: '#' },
+    { label: 'Writing & Poetry', href: '#' },
+    { label: 'Features & Interviews', href: '#' },
+    { label: 'Sports & Extracurriculurs', href: '#' },
+    { label: 'Advice & Well-Being', href: '#' },
   ];
 
   const navigation = navItems.length > 0 ? navItems : defaultNavItems;

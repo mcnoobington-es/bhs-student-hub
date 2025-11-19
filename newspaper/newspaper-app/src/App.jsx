@@ -10,7 +10,7 @@ import {
   NewsletterSignup
 } from './components';
 
-const Homepage = () => {
+const App = () => {
   // Sample article data
   const featuredArticle = {
     category: 'The Current',
@@ -160,4 +160,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default App;

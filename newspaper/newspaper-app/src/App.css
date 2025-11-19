@@ -110,7 +110,7 @@ body {
 /* Featured Article Styles */
 .featured-article {
   background-color: #000000;
-  margin: 0px;
+  margin-top: 0px;
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr;

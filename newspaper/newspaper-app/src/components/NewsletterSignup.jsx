@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const NewsletterSignup = ({ 
   title = "Sign up for our newsletter",
-  description = "Get the best of The New Yorker in your in-box every day.",
+  description = "Get the best of The BHS Post in your in-box every day.",
   buttonText = "Subscribe",
   onSubmit,
   showBorder = true,
